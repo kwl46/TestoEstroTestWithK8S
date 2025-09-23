@@ -33,4 +33,4 @@ jobs:
           REPO: solo-project-personality
         run: |
           docker build -f backend/Dockerfile -t $NAME/$REPO/personality-backend:latest ./backend
-          docker push $NAME//$REPO/personality-backend:latest
+          docker push $NAME/$REPO/personality-backend:latest
