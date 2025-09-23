@@ -32,5 +32,7 @@ jobs:
           NAME: yjsco653
           REPO: solo-project-personality
         run: |
-          docker build -f backend/Dockerfile -t $NAME/$REPO/personality-backend:latest ./backend
-          docker push $NAME/$REPO/personality-backend:latest
+          docker build -t $REPO .
+          docker tag $REPO:latest $NAME/$REPO:latest
+          docker push $NAME/$REPO:latest
+        working-directory: backend

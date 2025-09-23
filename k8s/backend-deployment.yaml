@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: backend
-        image: personality-test-backend:latest # Docker Hub 또는 다른 레지스트리의 이미지 주소로 변경해야 합니다.
+        image: yjsco653/solo-project-personality:latest # Docker Hub 또는 다른 레지스트리의 이미지 주소로 변경해야 합니다.
         ports:
         - containerPort: 8000
