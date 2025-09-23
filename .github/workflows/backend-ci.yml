@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
 
 jobs:
   build-and-push-backend:
@@ -27,6 +28,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push Docker image for backend
+        env:
+          REPO: solo-project-personality
         run: |
-          docker build -f backend/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/personality-test-backend:latest ./backend
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/personality-test-backend:latest
+          docker build -f backend/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPO/personality-backend:latest ./backend
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPO/personality-backend:latest
