@@ -1,5 +1,5 @@
 # 1. Python 3.9-slim 버전을 기반으로 이미지를 생성합니다.
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 # 2. 컨테이너 내의 작업 디렉토리를 /app으로 설정합니다.
 WORKDIR /app
