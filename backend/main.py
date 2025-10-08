@@ -3,8 +3,11 @@ import random
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+
+Instrumentator().instrument(app).expose(app)  # Add prometheus
 
 # CORS 설정
 origins = [
