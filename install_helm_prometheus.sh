@@ -8,13 +8,19 @@ echo "================================================="
 echo "--- 0. Helm CLI 설치 시작 ---"
 echo "================================================="
 
-# 최신 버전의 Helm 설치 스크립트 다운로드 및 실행 (Linux/amd64 기준)
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+if ! command -v helm &> /dev/null
+then
+    echo "Helm CLI가 설치되어 있지 않습니다. 설치를 진행합니다."
+    # 최신 버전의 Helm 설치 스크립트 다운로드 및 실행 (Linux/amd64 기준)
+    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+    chmod 700 get_helm.sh
+    ./get_helm.sh
 
-# 설치 스크립트 파일 삭제
-rm get_helm.sh
+    # 설치 스크립트 파일 삭제
+    rm get_helm.sh
+else
+    echo "Helm CLI가 이미 설치되어 있습니다. 설치를 건너뜁니다."
+fi
 
 echo "✅ Helm CLI 설치 완료. 버전 확인:"
 helm version
