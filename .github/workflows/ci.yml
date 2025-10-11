@@ -32,4 +32,4 @@ jobs:
           REPO: flaskweb
         run: |
           docker build -f backend/Dockerfile -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPO/personality-backend:latest ./backend
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/REPO/personality-test-backend:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPO/personality-test-backend:latest
