@@ -17,6 +17,7 @@ jobs:
         run: |
           npm install
           npm run build
+        working-directory: frontend
 
       - name: AWS IAM 사용자 설정
         uses: aws-actions/configure-aws-credentials@v2

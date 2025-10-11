@@ -3,12 +3,16 @@ import random
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
 
+Instrumentator().instrument(app).expose(app)  # Add prometheus
+
 # CORS 설정
 origins = [
-    "http://localhost:3000",  # React 앱의 주소
+    "http://localhost:3000",  # React 앱의 주소, 
+    "http://kiwon-solo-bucket.s3-website.ap-northeast-2.amazonaws.com" # aws s3 frontend 도메인
 ]
 
 app.add_middleware(
