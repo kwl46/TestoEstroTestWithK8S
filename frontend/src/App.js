@@ -5,6 +5,9 @@ import './App.css';
 
 import questions from './questions.json';
 
+// 💡 백엔드 서버의 절대 URL을 상수로 정의
+const BACKEND_URL = 'http://54.180.90.210:32000'
+
 function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [scores, setScores] = useState({ T: 0, E: 0 });
@@ -26,21 +29,27 @@ function App() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       // Last question answered, call API
-      fetch('/result', {
+      fetch(`${BACKEND_URL}/result`, { // 💡 수정된 부분: 절대 경로 사용
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ ...newScores, gender }),
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(data => {
         setResultData(data);
         setShowResult(true);
       })
       .catch(error => {
         console.error('Error fetching result:', error);
-        // Handle error, maybe show a default result or an error message
+        // 에러 발생 시 사용자에게 에러 메시지를 보여줄 수 있습니다.
+        alert('결과를 불러오는 중 오류가 발생했습니다. 서버 상태를 확인해주세요.');
       });
     }
   };
@@ -63,10 +72,12 @@ function App() {
             <button onClick={restart}>다시하기</button>
           </>
         ) : (
-          <Question
-            question={questions[currentQuestion]}
-            onAnswer={handleAnswer}
-          />
+          questions[currentQuestion] && ( // currentQuestion이 questions.length에 도달하면 렌더링하지 않도록 추가
+            <Question
+              question={questions[currentQuestion]}
+              onAnswer={handleAnswer}
+            />
+          )
         )}
       </header>
     </div>
