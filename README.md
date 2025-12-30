@@ -2,7 +2,7 @@
 
 간단한 질문들을 통해 사용자의 성향을 분석하는 웹 애플리케이션입니다. React로 제작된 프론트엔드와 Python 기반의 백엔드 API로 구성되어 있으며, Docker와 Kubernetes를 통해 AWS EC2 환경에 배포됩니다.
 
-## ✨ 주요 기능
+## 주요 기능
 
 *   **성향 테스트**: 성향을 분석하기 위한 질문지를 제공하고 결과를 분석합니다.
 *   **컨테이너 기반**: Docker를 사용하여 개발 및 배포 환경을 일치시킵니다.
@@ -15,7 +15,7 @@
 *   **Frontend**: `main` 브랜치 Push -> GitHub Actions 실행 -> React 앱 빌드 -> AWS S3 버킷에 업로드
 *   **Backend**: `main` 브랜치 Push -> GitHub Actions 실행 -> Docker 이미지 빌드 및 Push
 
-## 🛠️ 기술 스택
+## 기술 스택
 
 ### Frontend
 *   React.js
@@ -32,7 +32,7 @@
 *   GitHub Actions (CI/CD)
 *   HPA
 
-## 🚢 배포
+## 배포
 
 이 프로젝트는 GitHub Actions를 통해 프론트엔드와 백엔드가 각각 다른 방식으로 자동 배포됩니다.
 
@@ -44,7 +44,7 @@
 *   **Kubernetes 설정**: `k8s` 디렉토리의 YAML 파일들을 통해 백엔드 Pod, Service 등이 관리됩니다.
 *   **모니터링 설정**: `install_helm_prometheus.sh` 스크립트를 사용하여 클러스터에 Prometheus를 설치하고, `k8s/prometheus.yaml` 설정으로 모니터링 대상을 지정합니다.
 
-## 📁 디렉토리 구조
+## 디렉토리 구조
 
 ```
 .
