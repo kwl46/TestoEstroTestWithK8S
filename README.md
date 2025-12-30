@@ -48,8 +48,8 @@
 
 ```
 .
-├── backend/         # Python 백엔드 소스코드 및 Dockerfile
-├── frontend/        # React 프론트엔드 소스코드 및 Nginx 설정
+├── backend/         # Python 백엔드 소스코드
+├── frontend/        # React 프론트엔드 소스코드
 ├── k8s/             # Kubernetes 배포용 YAML 파일
 ├── .github/         # GitHub Actions CI/CD 워크플로우
 ├── docker-compose.yml # 로컬 개발 환경 설정
